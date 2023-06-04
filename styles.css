@@ -1,0 +1,223 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: blueviolet;
+}
+
+.btn {
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: large;
+  border-radius: 10px;
+  border: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.rules-page {
+  width: 500px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 20px;
+  align-items: center;
+  line-height: 25px;
+  background-color: #dac7f5;
+  border-radius: 10px;
+}
+
+.close-btn {
+  background-color: brown;
+  color: aliceblue;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.welcome-page {
+  width: 500px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 20px;
+  align-items: center;
+  line-height: 25px;
+  background-color: rgb(188, 150, 199);
+  border-radius: 10px;
+}
+
+#input-count {
+  margin-right: 110px;
+}
+
+input {
+  padding: 6px;
+  border: none;
+}
+
+.start-btn {
+  background-color: cadetblue;
+  color: black;
+  cursor: pointer;
+}
+
+.start-btn:hover {
+  background-color: aquamarine;
+  color: darkgreen;
+  transform: scale(1.1);
+}
+
+.card-field {
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  padding: 100px;
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.container-game {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.main-page {
+  flex-direction: column;
+  min-height: 80vh;
+  width: 800px;
+  align-items: center;
+}
+
+#score-board {
+  display: flex;
+  justify-content: space-between;
+  background-color: #dac7f5;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  width: 400px;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: x-large;
+  margin-right: 50px;
+}
+.point {
+  font-size: xx-large;
+  margin-right: 50px;
+}
+#commentary {
+  color: whitesmoke;
+  width: 700px;
+  height: 60px;
+  padding: 10px;
+  text-align: center;
+  margin-top: 30px;
+}
+.celebrate {
+  animation: comments 0.5s 1 ease-in-out;
+}
+#game-field {
+  background-color: yellow;
+  width: 450px;
+  height: 250px;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.icon {
+  background-color: white;
+  padding: 15px;
+  font-size: 30px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.large-icon {
+  font-size: 100px;
+  margin-top: 10px;
+}
+
+.handshaking {
+  animation: hands-shaking 0.5s infinite ease-in-out;
+}
+
+.handshaking-comp {
+  animation: hands-shaking-comp 0.5s infinite ease-in-out;
+}
+
+@keyframes hands-shaking {
+  0% {
+    position: relative;
+    top: 2rem;
+    transform: rotate(10deg);
+  }
+  100% {
+    position: relative;
+    top: -2rem;
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes hands-shaking-comp {
+  0% {
+    position: relative;
+    top: 2rem;
+    transform: rotate(-10deg);
+  }
+  100% {
+    position: relative;
+    top: -2rem;
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes comments {
+  0% {
+    font-size: x-small;
+  }
+  50% {
+    font-size: small;
+  }
+  100% {
+    font-size: larger;
+  }
+}
+
+.btns-field {
+  margin-top: 10px;
+}
+
+.reset-btn {
+  background-color: wheat;
+  color: chocolate;
+  cursor: pointer;
+}
+
+.exit-btn {
+  background-color: violet;
+  color: darkmagenta;
+  cursor: pointer;
+}

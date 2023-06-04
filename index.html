@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stone paper scissors</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="rules" class="rules-page container">
+      <h1 class="rules-head">Rules to Play, How?</h1>
+      <p>
+        Our Childhood hand game rock-paper-scissors is a game played by us to
+        enjoy our time. It is stated that it is also <br />
+        used to clear disputes between villagers<br />
+        This game is played in a series of rounds and the person who wins most
+        rounds wins the game.
+      </p>
+      <p>
+        <b
+          >All you need to know is:<br />-Rock(👊) beats scissors(✌)<br />-Scissors(✌)
+          beats paper(🖐)<br />-Paper(🖐) beats rock(👊)</b
+        >
+      </p>
+      <button id="close-btn" class="btn close-btn">Close</button>
+    </section>
+    <div id="welcome-page" class="welcome-page container">
+      <h1>Welcome to RPS Game</h1>
+      <h3>Let's play Hand Game</h3>
+
+      <input
+        id="input-name"
+        type="text"
+        maxlength="5"
+        placeholder="Enter name here..."
+      />
+      <input type="number" min="1" max="5" id="input-count" />
+      <button id="start-btn" class="btn start-btn">START</button>
+    </div>
+    <div class="container-game">
+      <div id="game-page" class="main-page">
+        <div id="score-board">
+          <div>
+            <p id="us-name" class="name">bej</p>
+            <p id="us-point" class="point">0</p>
+          </div>
+          <div>
+            <p class="name">Computer</p>
+            <p id="com-point" class="point">0</p>
+          </div>
+        </div>
+        <h1 id="commentary"></h1>
+        <div id="game-field">
+          <div id="icon-field">
+            <p id="stone" class="icon stone-icon">👊</p>
+            <p id="paper" class="icon paper-icon">🖐</p>
+            <p id="scissor" class="icon scissor-icon">✌</p>
+          </div>
+          <div id="player" class="large-icon">🤜</div>
+          <div id="computer" class="large-icon">🤛</div>
+        </div>
+        <div class="btns-field">
+          <button id="reset-btn" class="btn reset-btn">Reset</button>
+          <button id="exit-btn" class="btn exit-btn">Exit</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
