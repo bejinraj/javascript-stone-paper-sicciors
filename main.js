@@ -15,9 +15,9 @@ const scissor = document.getElementById("scissor");
 const playerCard = document.getElementById("player");
 const computerCard = document.getElementById("computer");
 
-let userName = document.getElementById("input-name");
-let count = document.getElementById("input-count");
-let gameName = document.getElementById("us-name");
+const userName = document.getElementById("input-name");
+const count = document.getElementById("input-count");
+const gameName = document.getElementById("us-name");
 
 let playerPoint = document.getElementById("us-point");
 let computerPoint = document.getElementById("com-point");
@@ -27,7 +27,7 @@ const comment = document.getElementById("commentary");
 const resetBtn = document.getElementById("reset-btn");
 const exitBtn = document.getElementById("exit-btn");
 
-let r = Math.floor(Math.random() * 3);
+let playTimes = 0;
 
 window.addEventListener("load", () => {
   welcomePage.style.display = "none";
@@ -36,140 +36,179 @@ window.addEventListener("load", () => {
 });
 
 let render = () => {
-  gameName.innerHTML = userName.value;
+  console.log(playTimes);
   comment.innerHtml = "";
   playerPoint.innerHTML = 0;
   computerPoint.innerHTML = 0;
   let plaPoint = 0;
   let comPoint = 0;
 
+  let play = 0;
   stone.addEventListener("click", () => {
-    playerCard.classList.add("handshaking");
-    computerCard.classList.add("handshaking-comp");
-    comment.classList.remove("celebrate");
-    stone.style.display = "block";
-    paper.style.display = "none";
-    scissor.style.display = "none";
+    if (play < playTimes) {
+      playerCard.classList.add("handshaking");
+      computerCard.classList.add("handshaking-comp");
+      comment.classList.remove("celebrate");
 
-    setTimeout(() => {
-      playerCard.classList.remove("handshaking");
-      computerCard.classList.remove("handshaking-comp");
-      comment.classList.add("celebrate");
-      stone.style.display = "block";
-      paper.style.display = "block";
-      scissor.style.display = "block";
-
-      let i = Math.floor(Math.random() * 3);
-      computerCard.innerHTML = icons[i];
-      playerCard.innerHTML = icons[0];
-
-      if (i == 1) {
-        plaPoint = plaPoint + 0;
-        comPoint = comPoint + 1;
-        comment.innerHTML = "Computer Wins!!!😝";
-      } else if (i == 2) {
-        plaPoint = plaPoint + 1;
-        comPoint = comPoint + 0;
-        comment.innerHTML = "Player Wins!!!🥺";
-      } else if (i == 0) {
-        plaPoint = plaPoint + 0;
-        comPoint = comPoint + 0;
-        comment.innerHTML = "Retry 😵‍💫";
-      }
-      playerPoint.innerHTML = `${plaPoint}`;
-      computerPoint.innerHTML = `${comPoint}`;
       setTimeout(() => {
-        comment.innerHTML = "";
-        computerCard.innerHTML = "🤛";
-        playerCard.innerHTML = "🤜";
-      }, 1500);
-    }, 2000);
+        playerCard.classList.remove("handshaking");
+        computerCard.classList.remove("handshaking-comp");
+        comment.classList.add("celebrate");
+
+        let i = Math.floor(Math.random() * 3);
+        computerCard.innerHTML = icons[i];
+        playerCard.innerHTML = icons[0];
+
+        if (i == 1) {
+          plaPoint = plaPoint + 0;
+          comPoint = comPoint + 1;
+          comment.innerHTML = "Computer Wins!!!😝";
+          play++;
+        } else if (i == 2) {
+          plaPoint = plaPoint + 1;
+          comPoint = comPoint + 0;
+          comment.innerHTML = "Player Wins!!!🥺";
+          play++;
+        } else if (i == 0) {
+          plaPoint = plaPoint + 0;
+          comPoint = comPoint + 0;
+          comment.innerHTML = "Retry 😵‍💫";
+        }
+        playerPoint.innerHTML = `${plaPoint}`;
+        computerPoint.innerHTML = `${comPoint}`;
+        setTimeout(() => {
+          comment.innerHTML = "";
+          computerCard.innerHTML = "🤛";
+          playerCard.innerHTML = "🤜";
+          if (playTimes !== 0 && play === playTimes) {
+            console.log("Game Over");
+            comment.classList.add("celebrate");
+            setTimeout(() => {
+              if (plaPoint > comPoint) {
+                comment.innerHTML = "Game Over - Player Wins!!!🥺";
+              } else if (comPoint > plaPoint) {
+                comment.innerHTML = "Game Over - Computer Wins!!!😝";
+              } else if (plaPoint == comPoint) {
+                comment.innerHTML = "Game Over - Draw!!!😵‍💫";
+              }
+              play++;
+            }, 1000);
+          }
+        }, 1500);
+      }, 2000);
+    }
   });
 
   paper.addEventListener("click", () => {
-    playerCard.classList.add("handshaking");
-    computerCard.classList.add("handshaking-comp");
-    comment.classList.remove("celebrate");
-    stone.style.display = "none";
-    paper.style.display = "block";
-    scissor.style.display = "none";
+    if (play < playTimes) {
+      playerCard.classList.add("handshaking");
+      computerCard.classList.add("handshaking-comp");
+      comment.classList.remove("celebrate");
 
-    setTimeout(() => {
-      playerCard.classList.remove("handshaking");
-      computerCard.classList.remove("handshaking-comp");
-      comment.classList.add("celebrate");
-      stone.style.display = "block";
-      paper.style.display = "block";
-      scissor.style.display = "block";
-
-      let i = Math.floor(Math.random() * 3);
-      computerCard.innerHTML = icons[i];
-      playerCard.innerHTML = icons[1];
-
-      if (i == 1) {
-        plaPoint = plaPoint + 0;
-        comPoint = comPoint + 0;
-        comment.innerHTML = "Retry 😵‍💫";
-      } else if (i == 2) {
-        plaPoint = plaPoint + 0;
-        comPoint = comPoint + 1;
-        comment.innerHTML = "Computer Wins!!!😝";
-      } else if (i == 0) {
-        plaPoint = plaPoint + 1;
-        comPoint = comPoint + 0;
-        comment.innerHTML = "Player Wins!!!🥺";
-      }
-      playerPoint.innerHTML = `${plaPoint}`;
-      computerPoint.innerHTML = `${comPoint}`;
       setTimeout(() => {
-        comment.innerHTML = "";
-        computerCard.innerHTML = "🤛";
-        playerCard.innerHTML = "🤜";
-      }, 1000);
-    }, 2000);
+        playerCard.classList.remove("handshaking");
+        computerCard.classList.remove("handshaking-comp");
+        comment.classList.add("celebrate");
+
+        let i = Math.floor(Math.random() * 3);
+        computerCard.innerHTML = icons[i];
+        playerCard.innerHTML = icons[1];
+
+        if (i == 1) {
+          plaPoint = plaPoint + 0;
+          comPoint = comPoint + 0;
+          comment.innerHTML = "Retry 😵‍💫";
+        } else if (i == 2) {
+          plaPoint = plaPoint + 0;
+          comPoint = comPoint + 1;
+          comment.innerHTML = "Computer Wins!!!😝";
+          play++;
+        } else if (i == 0) {
+          plaPoint = plaPoint + 1;
+          comPoint = comPoint + 0;
+          comment.innerHTML = "Player Wins!!!🥺";
+          play++;
+        }
+        playerPoint.innerHTML = `${plaPoint}`;
+        computerPoint.innerHTML = `${comPoint}`;
+        setTimeout(() => {
+          comment.innerHTML = "";
+          computerCard.innerHTML = "🤛";
+          playerCard.innerHTML = "🤜";
+          console.log(play, playTimes);
+          if (playTimes !== 0 && play === playTimes) {
+            console.log("Game Over");
+            comment.classList.add("celebrate");
+            setTimeout(() => {
+              if (plaPoint > comPoint) {
+                comment.innerHTML = "Game Over - Player Wins!!!🥺";
+              } else if (comPoint > plaPoint) {
+                comment.innerHTML = "Game Over - Computer Wins!!!😝";
+              } else if (plaPoint == comPoint) {
+                comment.innerHTML = "Game Over - Draw!!!😵‍💫";
+              }
+              play++;
+            }, 1000);
+          }
+        }, 1500);
+      }, 2000);
+    }
   });
 
   scissor.addEventListener("click", () => {
-    playerCard.classList.add("handshaking");
-    computerCard.classList.add("handshaking-comp");
-    comment.classList.remove("celebrate");
-    stone.style.display = "none";
-    paper.style.display = "none";
-    scissor.style.display = "block";
+    if (play < playTimes) {
+      playerCard.classList.add("handshaking");
+      computerCard.classList.add("handshaking-comp");
+      comment.classList.remove("celebrate");
 
-    setTimeout(() => {
-      playerCard.classList.remove("handshaking");
-      computerCard.classList.remove("handshaking-comp");
-      comment.classList.add("celebrate");
-      stone.style.display = "block";
-      paper.style.display = "block";
-      scissor.style.display = "block";
-
-      let i = Math.floor(Math.random() * 3);
-      computerCard.innerHTML = icons[i];
-      playerCard.innerHTML = icons[2];
-
-      if (i == 1) {
-        plaPoint = plaPoint + 1;
-        comPoint = comPoint + 0;
-        comment.innerHTML = "Player Wins!!!🥺";
-      } else if (i == 2) {
-        plaPoint = plaPoint + 0;
-        comPoint = comPoint + 0;
-        comment.innerHTML = "Retry 😵‍💫";
-      } else if (i == 0) {
-        plaPoint = plaPoint + 0;
-        comPoint = comPoint + 1;
-        comment.innerHTML = "Computer Wins!!!😝";
-      }
-      playerPoint.innerHTML = `${plaPoint}`;
-      computerPoint.innerHTML = `${comPoint}`;
       setTimeout(() => {
-        comment.innerHTML = "";
-        computerCard.innerHTML = "🤛";
-        playerCard.innerHTML = "🤜";
-      }, 1000);
-    }, 2000);
+        playerCard.classList.remove("handshaking");
+        computerCard.classList.remove("handshaking-comp");
+        comment.classList.add("celebrate");
+
+        let i = Math.floor(Math.random() * 3);
+        computerCard.innerHTML = icons[i];
+        playerCard.innerHTML = icons[2];
+
+        if (i == 1) {
+          plaPoint = plaPoint + 1;
+          comPoint = comPoint + 0;
+          comment.innerHTML = "Player Wins!!!🥺";
+          play++;
+        } else if (i == 2) {
+          plaPoint = plaPoint + 0;
+          comPoint = comPoint + 0;
+          comment.innerHTML = "Retry 😵‍💫";
+        } else if (i == 0) {
+          plaPoint = plaPoint + 0;
+          comPoint = comPoint + 1;
+          comment.innerHTML = "Computer Wins!!!😝";
+          play++;
+        }
+        playerPoint.innerHTML = `${plaPoint}`;
+        computerPoint.innerHTML = `${comPoint}`;
+        setTimeout(() => {
+          comment.innerHTML = "";
+          computerCard.innerHTML = "🤛";
+          playerCard.innerHTML = "🤜";
+          if (playTimes !== 0 && play === playTimes) {
+            console.log("Game Over");
+            comment.classList.add("celebrate");
+            setTimeout(() => {
+              if (plaPoint > comPoint) {
+                comment.innerHTML = "Game Over - Player Wins!!!🥺";
+              } else if (comPoint > plaPoint) {
+                comment.innerHTML = "Game Over - Computer Wins!!!😝";
+              } else if (plaPoint == comPoint) {
+                comment.innerHTML = "Game Over - Draw!!!😵‍💫";
+              }
+              play++;
+            }, 1000);
+          }
+        }, 1500);
+        play++;
+      }, 2000);
+    }
   });
 };
 render();
@@ -184,7 +223,9 @@ startBtn.addEventListener("click", () => {
   if (userName.value == "" && count.value == "") {
     alert("Input field is empty");
   } else {
-    gameName.innerHTML = userName.value;
+    gameName.innerHTML =
+      userName.value.charAt(0).toUpperCase() + userName.value.slice(1);
+    playTimes = parseInt(count.value);
     welcomePage.style.display = "none";
     rules.style.display = "none";
     gamePage.style.display = "flex";

@@ -57,11 +57,8 @@ body {
   border-radius: 10px;
 }
 
-#input-count {
-  margin-right: 110px;
-}
-
 input {
+  width: 250px; 
   padding: 6px;
   border: none;
 }
